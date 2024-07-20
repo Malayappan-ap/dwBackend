@@ -1,0 +1,35 @@
+package com.javatpoint.util;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement; // Import PreparedStatement class
+import java.sql.SQLException;
+
+public class DBUtil {
+    private static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+    private static final String USERNAME = "******";
+    private static final String PASSWORD = "******";
+
+    // Method to get a database connection
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    }
+
+    // Method to close a database connection and prepared statement
+    public static void closeConnection(Connection connection, PreparedStatement pstmt) {
+        if (pstmt != null) { // Close PreparedStatement first
+            try {
+                pstmt.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        if (connection != null) { // Close Connection
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
