@@ -1,0 +1,146 @@
+tpointform1.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      
+      h2 {
+        color: #333;
+      }
+      
+      form {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+      
+      button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #45a049;
+      }
+      
+      .alert {
+        background-color: #f2dede;
+        color: #a94442;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ebccd1;
+        border-radius: 4px;
+      }
+  </style>
+</head>
+<body>
+
+  <h2>Registration</h2>
+  <form id="registrationForm" action="tpointform1.jsp" method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" required name="username">
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" required name="password">
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    function submitForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username.trim() === "" || password.trim() === "") {
+        alert("Please enter both username and password");
+        return;
+      }
+
+      // Ajax request to submit the form data to the JSP
+      $.ajax({
+        type: "POST",
+        url: "tpointform1.jsp",
+        data: {
+          username: username,
+          password: password
+        },
+        success: function(response) {
+          alert(response); // Alert the response from the server
+          window.location.href = "medical.html"; // Redirect to another page
+        },
+        error: function() {
+          alert("Failed to register user");
+        }
+      });
+    }
+  </script>
+</body>
+</html>
+
+tpointform1.jsp
+
+<%@ page import="com.javatpoint.bean.User1" %>
+<%@ page import="com.javatpoint.dao.UserDao1" %>
+<%@ page import="java.io.*,java.util.*" %>
+<jsp:useBean id="user" class="com.javatpoint.bean.User1"></jsp:useBean>
+<jsp:setProperty name="user" property="*"/>
+
+<%
+    if (request.getMethod().equals("POST")) {
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        
+        if (username != null && password != null) {
+            // Populate the User bean
+            user.setUsername(username);
+            user.setPassword(password);
+
+            UserDao1 userDao = new UserDao1();
+            int status = userDao.save(user);
+            if (status > 0) {
+                out.println("Registration successful! You can now log in.");
+                // Redirect to another page after successful registration
+                response.sendRedirect("login.html");
+            } else {
+                out.println("Failed to register user.");
+            }
+        } else {
+            out.println("Enter both username and password");
+        }
+    }
+%>
