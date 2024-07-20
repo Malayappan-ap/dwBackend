@@ -1,0 +1,175 @@
+medical.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Assessment</title>
+    <style>
+        body {
+            background-image: url('https://w0.peakpx.com/wallpaper/834/181/HD-wallpaper-painting-pretty-art-quiet-lovely-beautiful-lonely-trees-sky-leaves-nice-paradise-flowers-peaceful-nature.jpg');
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+      
+        form {
+            background-color: #d6ebeb;
+            border: 3px solid #b96363;
+            margin: 2.5px, 2.5px, 2.5px, 2.5px;
+            padding: 10px;
+            text-align: center;
+            align-items: center;
+        }
+      
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+      
+        input {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+      
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+      
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        #result {
+            border: 2px solid #a43a3a;
+            margin: 2.5px, 2.5px, 2.5px, 2.5px;
+            padding: 10px;
+            background-color: #d6ebeb;
+        }
+        
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 0.8rem 0.6rem;
+            border: none;
+            font-size: 1.4rem;
+            border-radius: 5px;
+            color: #010505;
+            text-decoration: none;
+        }
+        
+        .red {
+            background-color: hwb(239 53% 16%);
+            margin-right: 1.5rem;
+            box-sizing: border-box;
+        }
+        
+        .red:hover {
+            opacity: 0.8;
+            color: #04364A;
+        }
+    </style>
+</head>
+<body>
+    <form id="assessmentForm" action="medical.jsp" method="POST">
+        <label for="feeling"><strong>1. How are you feeling right now?</strong></label><br>
+        <input type="text" id="feeling" name="feeling"><br>
+        
+        <label for="moodRating"><strong>2. On a scale of 1 to 10, how would you rate your mood?</strong></label>
+        <input type="number" id="moodRating" name="moodRating" min="1" max="10"><br>
+        
+        <label for="experiencedBefore"><strong>3. Did you experience this before?</strong></label>
+        <input type="text" id="experiencedBefore" name="experiencedBefore"><br>
+        
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+
+    <div id="result"></div>
+    <script>
+    function submitForm() {
+    const feeling = document.getElementById("feeling").value;
+    const moodRating = parseInt(document.getElementById("moodRating").value);
+    const experiencedBefore = document.getElementById("experiencedBefore").value;
+
+    // Validate input for moodRating
+    if (isNaN(moodRating) || moodRating < 1 || moodRating > 10) {
+        alert("Please enter a valid mood rating between 1 and 10.");
+        return;
+    }
+
+    let result = "Your mental health is ";
+    if (feeling === 'b' && moodRating >= 7 && experiencedBefore === 'b') {
+        result += "in a good condition.";
+    } else if (feeling === 'a' || moodRating < 5 || experiencedBefore === 'a') {
+        result += "concerning. Consider seeking support.";
+        document.getElementById('result').innerHTML = result;
+        window.location = "./appointment.html";
+        return;
+    } else if (feeling === 'a' || moodRating === 6 || experiencedBefore === 'b') {
+        result += "just tension.";
+    } else if (feeling === 'b' || moodRating === 10 || experiencedBefore === 'a' || experiencedBefore === 'b') {
+        result += "you are perfect.";
+    } else {
+        result += "moderate. Take care of yourself.";
+        document.getElementById('result').innerHTML = result;
+        window.location = "./depressed.html";
+        return;
+    }
+
+    document.getElementById('result').innerHTML = result;
+    const formData = new FormData(document.getElementById('assessmentForm'));
+    fetch('medical.jsp', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('result').innerHTML = data;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
+</script>
+</body>
+</html>
+
+medical.jsp
+
+<jsp:useBean id="assessmentResult" class="com.javatpoint.bean.AssessmentResultBean"></jsp:useBean>
+<jsp:setProperty name="assessmentResult" property="assessmentResult"/>
+
+<%
+    // Your assessment logic
+    String assessmentResult = "";
+
+    // Your assessment logic here...
+    if (feeling.equals("b") && moodRating >= 7 && experiencedBefore.equals("b")) {
+            assessmentResult = "in a good condition.";
+        } else if (feeling.equals("a") || moodRating < 5 || experiencedBefore.equals("a")) {
+            assessmentResult = "concerning. Consider seeking support.";
+        } else if (feeling.equals("a") || moodRating == 6 || experiencedBefore.equals("b")) {
+            assessmentResult = "just tension.";
+        } else if (feeling.equals("b") || moodRating == 10 || experiencedBefore.equals("a") || experiencedBefore.equals("b")) {
+            assessmentResult = "you are perfect.";
+        } else {
+            assessmentResult = "moderate. Take care of yourself.";
+        }
+
+    // Set the assessment result
+    assessmentResult.setAssessmentResult(assessmentResult);
+
+    // Save assessment result to the database
+    int rowsAffected = MedicalDao.saveAssessmentResult(assessmentResult.getAssessmentResult());
+    if (rowsAffected > 0) {
+        // Display the assessment result
+        out.println("Assessment result: " + assessmentResult.getAssessmentResult());
+    } else {
+        out.println("Error: Failed to save data.");
+    }
+%>
