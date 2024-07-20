@@ -13,7 +13,7 @@ public class AppointmentDAO {
         Connection con=null;
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","prabhas");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","username","password");
         } catch(Exception e){
             System.out.println(e);
         }
@@ -53,7 +53,7 @@ public class NewsletterDAO {
         Connection con=null;
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","prabhas");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","username","password");
         } catch(Exception e){
             System.out.println(e);
         }
@@ -88,7 +88,7 @@ public class UserDao {
         Connection con=null;
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","prabhas");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","username","password");
         } catch(Exception e){
             System.out.println(e);
         }
@@ -129,7 +129,7 @@ public class UserDao1 {
 
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "prabhas");
+        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "username", "password");
     }
 
     public int save(User1 user) {
@@ -200,6 +200,6 @@ public class loginDAO {
 
     private Connection getConnection() throws SQLException, ClassNotFoundException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
-        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "prabhas");
+        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "username", "password");
     }
 }
