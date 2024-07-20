@@ -1,0 +1,86 @@
+aboutis.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        body{
+            background-image: url('https://wallpapers.com/images/hd/abstract-light-blue-aesthetic-pc-ekm3jbiuru45d238.jpg');
+        }
+        .card {
+            display: flex;
+            box-shadow: 0 10px 15px 0 rgba(0,0,0,0.2);
+            transition: 0.5s;
+            border-radius: 10px;  
+        }
+        p{
+            border-radius: 10px 10px 0 0;
+          }
+          .card .container{
+            color: #1f1f1e;
+            font-size: large;
+          }
+          h4{
+            font-size: large;
+            color: #1f1f1e;
+          }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">About Us</h1>
+    <div class="card">
+        <h4>M. Aasritha Padmini</h4>
+        <br>
+        <div class="container">
+            <br><br>
+        <p><b>Designation:</b> Btech IT</p>
+        <p><b>Year:</b> 2nd</p>
+        <p><b>Roll no:</b> 22761A1240</p>
+        <p><b>Team Leader</b></p>
+    </div>
+    </div>
+    <div class="card">
+        <h4>G. Chinmayi</h4>
+        <br>
+        <div class="container">
+            <br><br>
+        <p><b>Designation:</b> Btech IT</p>
+        <p><b>Year:</b> 2nd</p>
+        <p><b>Roll no:</b> 22761A1222</p>
+    </div>
+    </div>
+    <div class="card">
+        <h4>Fasiha Tasneem</h4>
+        <br>
+        <div class="container">
+            <br><br>
+        <p><b>Designation:</b> Btech IT</p>
+        <p><b>Year:</b> 2nd</p>
+        <p><b>Roll no: </b> 22761A1241</p>
+    </div>
+    </div>
+    <div class="card">
+        <h4>K. Tanu Sri</h4>
+        <br><br>
+        <div class="container">
+            <br><br>
+        <p><b>Designation:</b> Btech IT</p>
+        <p><b>Year: </b>2nd</p>
+        <p><b>Roll no:</b> 22761A1233</p>
+    </div>
+    </div>
+    <div class="card">
+        <h4>M. Kode Nagu</h4>
+        <br><br>
+        <div class="container">
+            <br><br>
+        <p><b>Designation:</b> Btech IT</p>
+        <p><b>Year: </b>2nd</p>
+        <p><b>Roll no:</b> 22761A1239</p>
+    </div>
+    </div>
+</body>
+</html>
