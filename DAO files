@@ -1,0 +1,205 @@
+AppointmentDAO.java
+
+package com.javatpoint.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import com.javatpoint.bean.AppointmentBean;
+
+public class AppointmentDAO {
+    public static Connection getConnection(){
+        Connection con=null;
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","prabhas");
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return con;
+    }
+
+    public static int saveAppointment(AppointmentBean appointment) {
+        int status = 0;
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps=con.prepareStatement("INSERT INTO appointments (doctor_name, patient_name, appointment_date, appointment_time) VALUES (?, ?, ?, ?)");
+
+            ps.setString(1, appointment.getDoctorName());
+            ps.setString(2, appointment.getPatientName());
+            ps.setString(3, appointment.getAppointmentDate());
+            ps.setString(4, appointment.getAppointmentTime());
+
+            status = ps.executeUpdate();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return status;
+    }
+}
+NewLetterDAO.java
+
+package com.javatpoint.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import com.javatpoint.bean.NewsletterBean;
+
+public class NewsletterDAO {
+    public static Connection getConnection(){
+        Connection con=null;
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","prabhas");
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return con;
+    }
+
+    public static int saveSubscription(NewsletterBean subscription) {
+        int status = 0;
+        try{
+            Connection con = getConnection();
+            PreparedStatement ps=con.prepareStatement("INSERT INTO subscribers (email) VALUES (?)");
+
+            ps.setString(1, subscription.getEmail());
+
+            status = ps.executeUpdate();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return status;
+    }
+}
+UserDAO.java
+package com.javatpoint.dao;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+import com.javatpoint.bean.User;
+
+public class UserDao {
+    public static Connection getConnection(){
+        Connection con=null;
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","prabhas");
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return con;
+    }
+
+    public static int save(User u){
+        int status=0; 
+        try{
+            Connection con=getConnection();
+            PreparedStatement ps=con.prepareStatement("insert into depressed(name, email, password, confirmPassword) values(?,?,?,?)");
+            ps.setString(1,u.getName());
+            ps.setString(2,u.getEmail());
+            ps.setString(3,u.getPassword());
+            ps.setString(4,u.getConfirmPassword());
+            
+            status=ps.executeUpdate();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+        return status;
+    }
+
+    // Other methods remain the same...
+}
+User1DAO.java
+package com.javatpoint.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.javatpoint.bean.User1;
+
+public class UserDao1 {
+    private static final String INSERT_USER_SQL = "INSERT INTO users1 (username, password) VALUES (?, ?)";
+
+    public static Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "prabhas");
+    }
+
+    public int save(User1 user) {
+        int result = 0;
+        try (Connection connection = getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER_SQL)) {
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+
+            result = preparedStatement.executeUpdate();
+            // Commit the transaction
+            connection.commit();
+        } catch (SQLException | ClassNotFoundException e) {
+            // Print or log the exception
+            e.printStackTrace();
+        }
+        return result;
+    }
+    
+    
+}
+loginDAO.java
+
+package com.javatpoint.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.javatpoint.bean.User1;
+
+public class loginDAO {
+    private static final String SELECT_USER_BY_USERNAME = "SELECT * FROM users1 WHERE username = ?";
+
+    public User1 getUserByUsername(String username) throws SQLException, ClassNotFoundException {
+        User1 user = null;
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        
+        try {
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(SELECT_USER_BY_USERNAME);
+            preparedStatement.setString(1, username);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = new User1();
+                user.setId(resultSet.getInt("id"));
+                user.setUsername(resultSet.getString("username"));
+                user.setPassword(resultSet.getString("password"));
+            }
+        } finally {
+            // Close database resources in a finally block to ensure they are always closed
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (preparedStatement != null) {
+                preparedStatement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return user;
+    }
+
+    private Connection getConnection() throws SQLException, ClassNotFoundException {
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+        return DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "prabhas");
+    }
+}
