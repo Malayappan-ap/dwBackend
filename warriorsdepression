@@ -1,0 +1,225 @@
+warriorsdepression.jsp
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depression Warriors</title>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;  
+        }
+        header{
+          background-image: url('https://i.pinimg.com/originals/ab/78/ba/ab78ba64438af1ca7a5142397a0ab727.jpg');
+          border: 2px solid azure;
+          margin: 2.5px;
+          padding: 5px;
+        }
+        footer{
+          border: 2px solid azure;
+          margin: 2.5px;
+          padding: 5px;
+          background-image: url('https://www.pixelstalk.net/wp-content/uploads/images6/Free-Download-Aesthetic-Plain-Backgrounds-for-Desktop.jpg');
+        }
+        footer p{
+          color: beige;
+        }
+        #welcome-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+           
+          
+            color: #1e1846;
+            font-size: 24px;
+            overflow: hidden;
+        }
+
+        #welcome-slide {
+            display: none;
+        }
+        .btn {
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 0.8rem 0.6rem;
+            border: none;
+            font-size: 1.4rem;
+            border-radius: 5px;
+            color: #001B79;
+            text-decoration: none;
+          }
+          .red {
+            background-color: #F1B4BB;
+            margin-right: 1.5rem;
+            box-sizing: border-box;
+          }
+          
+          .red:hover:hover {
+           opacity: 0.8;
+            color: #04364A;
+          }
+          
+          .blue {
+            background-color: #F1B4BB;
+            box-sizing: border-box;
+          }
+          
+          .blue:hover {
+            opacity: 0.8;
+            color: #04364A;
+          }
+         #t1{
+            color: #001B79;
+            display: inline-flex;
+            text-align: center;
+            justify-content: center;
+            font-size: 50px;
+         } 
+         a{
+            text-decoration: none;
+         }
+         nav {
+            background-color: #333;
+            overflow: hidden;
+          }
+      
+          nav a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+          }
+      
+          nav a:hover {
+            background-color: #ddd;
+            color: black;
+          }
+          img{
+            width: 250px;
+            height: 250px;
+            float: right;
+            border-radius: 10px 10px 10px 10px;
+            box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+          }
+          table td{
+            color: beige;
+          }
+        
+    </style>
+</head>
+<body>
+  <header>
+    <nav id="dynamicNavbar">
+        <a href="./warriordepression.jsp">Home</a>
+        <a href="./tpointform.html">Answer Us</a>
+        <a href="./tpointform1.html">Visit Us</a>
+        <a href="./aboutus.html">About Us</a>
+        <a href="./newletter.html">Subscribe</a>
+        <a href="./appointment.html">Doctor's Appointment</a>
+      </nav>
+      
+    <div>
+        
+        <br><br><br><br><br>
+        <br><br><br>
+       
+        
+       
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1 id="t1">DEPRESSION WARRIORS</h1>
+    </div>
+
+<div id="welcome-container">
+    <br><br>
+    <div id="welcome-slide">    
+        <h1>Welcome!</h1>
+        
+        <a class="btn red" href="tpointform.html">Depressed!?</a>
+        <a class="btn blue" href="tpointform1.html">Wanna Know?</a>
+    </div>
+</div>
+</header>
+<footer>
+  <br>
+  <img src="https://news.northeastern.edu/wp-content/uploads/2023/02/Depression1400.jpg" alt="depression">
+  <br>
+  <h4>WHY DEPRESSION WARRIORS?</h4>
+  <br>
+  <p style="color: beige;">The reason behind this website is to help people who are suffering from depression. To test the user by asking certain questions
+    and evaluating the result to provide them best advice as possible.
+  </p>
+  <p style="color: beige;">Visit our exclusive website</p>
+  <a style="color: #2d3e3e; background-color:#ddd" href="./depressed.html">Visit Us</a>
+
+  <h4>WHY we Created this Website?</h4>
+  <p>At Depression Warriors, we believe in the extraordinary strength that resides within every individual facing the challenges of depression. Our mission is to create a supportive and empowering community that breaks the silence surrounding mental health.
+
+    <h4>Why Depression Warriors?</h4>
+    <table>
+      <tr>
+        <th><strong>Unity in Strength:</strong> </th>
+        <th><strong>Ending the Stigma:</strong> </th>
+        <th><strong>Resources for Healing:</strong></th>
+        <th> <strong>Community Connection:</strong> </th>
+        <th> <strong>Inspiration for Tomorrow:</strong></th>
+      </tr>
+      <tr>
+        <td>We are a collective of warriors?individuals who have faced, battled, and conquered depression. By sharing our stories,
+           we inspire others to recognize their own strength and resilience.</td>
+        <td>Depression Warriors is a safe space dedicated to dismantling the stigma associated with mental health. We challenge stereotypes 
+          and foster understanding, because everyone's battle is unique, and no one fights alone.</td>
+        <td> Our website is a treasure trove of resources? from coping mechanisms and self-care tips to professional advice. 
+          We aim to equip you with the tools needed to navigate the journey towards mental well-being.</td>
+          <td> Join a tribe that understands, supports, and uplifts. Depression Warriors is not just a website; it's a community where you can connect with fellow warriors, 
+            share your experiences, and find comfort in knowing that you are never alone.</td>
+            <td> Depression Warriors is more than a support group; it's a source of inspiration. We celebrate victories, big and small, and 
+              encourage a future where mental health is prioritized, understood, and embraced without judgment.</td>
+      </tr>
+      <p>Together, we are rewriting the narrative of depression, turning it from a struggle into a story of triumph. Join the movement, embrace your strength, and let's navigate the path to healing together. Depression Warriors - Because Every Battle is a Step Towards Victory! ?</p>
+    </table>
+    
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Slide down the welcome slide initially
+        $('#welcome-slide').slideDown();
+
+        // Handle the "Next" button click
+        $('#next-btn').on('click', function () {
+            // Slide up the welcome slide
+            $('#welcome-slide').slideUp(function () {
+                // You can perform additional actions or navigate to another slide here
+                alert('You clicked Next!'); // Replace this with your desired action
+
+                // Slide down the next slide or perform other actions
+                // For simplicity, let's just show an alert in this example
+                alert('Next slide or action goes here!');
+            });
+        });
+    });
+    const navLinks = [];
+
+  const navbar = document.getElementById('dynamicNavbar');
+
+  // Dynamically create navigation links
+  navLinks.forEach(linkText => {
+    const link = document.createElement('a');
+    link.href = '#' + linkText.toLowerCase();
+    link.textContent = linkText;
+    navbar.appendChild(link);
+  });
+
+</script>
+
+
+</body>
+</html>
