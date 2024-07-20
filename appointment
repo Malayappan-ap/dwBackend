@@ -1,0 +1,103 @@
+appointment.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor Appointment Booking</title>
+  <style>
+    body {
+        background-image: url('https://w0.peakpx.com/wallpaper/530/435/HD-wallpaper-cute-plant-minimalist-computer-simple-simple-plant-aesthetic.jpg');
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #45a049;
+      }
+      
+      #appointmentCard {
+        margin-top: 20px;
+      }
+      
+      .success-card {
+        border: 1px solid #4CAF50;
+        border-radius: 5px;
+        padding: 10px;
+        background-color: #dff0d8;
+        color: #4CAF50;
+      }
+      
+      .hidden {
+        display: none;
+      }
+      #appointmentForm{
+        border: 3px solid #92afaf;
+        margin: 2.5px;
+        padding: 5px;
+        text-align: center;
+        align-items: center;
+      }
+      input{
+        width: 250px;
+      }
+  </style>
+</head>
+<body>
+  <form id="appointmentForm" action="appointment.jsp" method="POST">
+    <label for="doctorName">Doctor's Name:</label>
+    <input type="text" id="doctorName" name="doctorName">
+    <label for="patientName">Patient's Name:</label>
+    <input type="text" id="patientName" name="patientName">
+    <label for="appointmentDate">Appointment Date:</label>
+    <input type="text" id="appointmentDate" name="appointmentDate">
+    <label for="appointmentTime">Appointment Time:</label>
+    <input type="text" id="appointmentTime" name="appointmentTime">
+    <br>
+    <button type="submit">Book Appointment</button>
+  </form>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script>
+    $(document).ready(function () {
+        $("#bookAppointment").on("click", function () {
+          // Get values from the form
+          const doctorName = $("#doctorName").val();
+          const patientName = $("#patientName").val();
+          const appointmentDate = $("#appointmentDate").val();
+          const appointmentTime = $("#appointmentTime").val();
+      
+          // Display details in the success card
+          $("#displayDoctorName").text(doctorName);
+          $("#displayPatientName").text(patientName);
+          $("#displayAppointmentDate").text(appointmentDate);
+          $("#displayAppointmentTime").text(appointmentTime);
+      
+          // Show the success card and hide the form
+          $("#appointmentForm").addClass("hidden");
+          $("#appointmentCard").removeClass("hidden");
+        });
+      });
+  </script>
+</body>
+</html>
