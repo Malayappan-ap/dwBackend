@@ -1,0 +1,98 @@
+depressed.html
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depressed</title>
+    <style>
+        body{
+            background-image: url('https://wallpapers.com/images/hd/worthy-motivational-quotes-aesthetic-k6dmv66l0dg5nakj.jpg');
+            width: fit-content;
+            height: fit-content;
+           background-repeat: no-repeat;
+        }
+        .card {
+            display: flex;
+            box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            border-radius: 10px;  
+        }
+          
+          /* Add rounded corners to the top left and the top right corner of the image */
+          img {
+            border-radius: 10px 10px 0 0;
+          }
+          h4{
+            color: rgb(4, 19, 32);
+          }
+          .c1{
+            flex: 1;
+          }
+          .c2{
+            
+            flex: 2;
+            
+          }
+          .c3{
+            flex: 3;
+          }
+          .c4{
+            flex: 4;
+          }
+          .c5{
+            flex: c5;
+          }
+          .card:c1{
+            margin-right: 20px;
+          }
+    </style>
+</head>
+<body>
+    <div class="box">
+    <div class="card c1">
+        <img src="https://domf5oio6qrcr.cloudfront.net/medialibrary/11082/214455af-09c4-41db-9736-d27eca80ea45.jpg" width="250px" height="200px" alt="Depression">
+        <div class="container">
+        &nbsp;<a href="https://www.unicef.org/parenting/mental-health/what-is-depression?gclid=CjwKCAiAmsurBhBvEiwA6e-WPIa5mElDYBCX-M8eQxOIL40waTLk80HdzlstBvziyuawklHo8DUKcBoCM3kQAvD_BwE"><h4>What is Depression?</h4></a>
+    </div>
+    </div>
+    <br>
+    <div class="card c2">
+        <img src="https://www.brainsway.com/wp-content/uploads/2022/09/teen-depression-1024x681.jpg" width="250px" height="200px" alt="Tdepression">
+        <div class="container">
+            &nbsp;<a href="https://mcpress.mayoclinic.org/mental-health/understanding-how-depression-effects-teens-and-adults-differently/?mc_id=global&utm_source=webpage&utm_medium=l&utm_content=epsmentalhealth&utm_campaign=mayoclinic&geo=global&placementsite=enterprise&invsrc=other&cauid=177193">
+            <h4>Depression in Teens</h4></a>
+        </div>
+    </div>
+    <br>
+    <div class="card c3">
+        <img src="https://discoverymood.com/wp-content/uploads/2019/05/iStock-947804676-510x340.jpg" width="250px" height="200px" alt="Tdepression">
+        <div class="container">
+           &nbsp;<a href="https://www.ourbetterworld.org/series/mental-health/support-toolkit/anxiety-schizophrenia-mental-health-conditions-explained?gad_source=1&gclid=CjwKCAiAmsurBhBvEiwA6e-WPBaEkB0E5gB8MTjt3Ebav51898S80rTwTHKiai2_GEUwXVNFvZDP0BoC6REQAvD_BwE">
+            <h4>Depression Disorder</h4></a>
+        </div>
+    </div>
+    <br>
+    <div class="card c4">
+        <img src="https://images.contentstack.io/v3/assets/bltd488044897c9abc0/bltc74980d8f2a1221d/6195465029140924cb9e7f20/como_salir_de_la_depresion_1.jpeg?auto=webp&format=jpg&quality=80&disable=upscale&width=518&height=300&crop=518%3A300%2Csmart" width="250px" height="200px" alt="Tdepression">
+        <div class="container">
+            &nbsp;<a href="https://www.nhs.uk/mental-health/conditions/depression-in-adults/symptoms/">
+            <h4>Depression in Adults</h4></a>
+        </div>
+    </div>
+    <br>
+    <div class="card c5">
+        <img src="https://www.bupa.co.uk/~/media/Images/HealthManagement/Blogs/555-369/2017/oct-17/man-tea-555-369.jpg " width="250px" height="200px" alt="">
+        <div class="container">
+           &nbsp;<a href="https://www.bupa.co.uk/newsroom/ourviews/anxiety-depression">
+            <h4>Anxiety vs. Depression</h4></a>
+        </div>
+    </div>
+</div>
+<br>
+
+    
+
+</body>
+</html>
