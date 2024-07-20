@@ -101,3 +101,69 @@ appointment.html
   </script>
 </body>
 </html>
+
+appointment.jsp
+
+<%@ page import="java.sql.*,com.javatpoint.dao.AppointmentDAO,com.javatpoint.bean.AppointmentBean" %>
+<%@ page import="java.io.*,java.util.*" %>
+
+<jsp:useBean id="appointment" class="com.javatpoint.bean.AppointmentBean"></jsp:useBean>
+<jsp:setProperty name="appointment" property="*"/>
+
+<%
+    // Retrieve form parameters
+    String doctorName = request.getParameter("doctorName");
+    String patientName = request.getParameter("patientName");
+    String appointmentDate = request.getParameter("appointmentDate");
+    String appointmentTime = request.getParameter("appointmentTime");
+
+    // Set the properties of the appointment bean
+    appointment.setDoctorName(doctorName);
+    appointment.setPatientName(patientName);
+    appointment.setAppointmentDate(appointmentDate);
+    appointment.setAppointmentTime(appointmentTime);
+    
+    // Call AppointmentDAO.saveAppointment() method to save the appointment
+    int status = AppointmentDAO.saveAppointment(appointment);
+    
+    // Check the status and display appropriate message
+    if (status > 0) {
+        // Display success card and hide the form
+        out.println("<div id='appointmentCard' class='success-card'>");
+        out.println("<h5>Appointment booked successfully!</h5>");
+        out.println("<p>Doctor's Name: " + doctorName + "</p>");
+        out.println("<p>Patient's Name: " + patientName + "</p>");
+        out.println("<p>Appointment Date: " + appointmentDate + "</p>");
+        out.println("<p>Appointment Time: " + appointmentTime + "</p>");
+        out.println("</div>");
+    } else {
+        out.println("Error booking appointment.");
+    }
+%>
+
+<!-- Your jQuery code for displaying success message -->
+<script>
+  $(document).ready(function () {
+    // Display success message
+    $("#appointmentForm").submit(function (event) {
+      // Prevent default form submission
+      event.preventDefault();
+
+      // Get values from the form
+      const doctorName = $("#doctorName").val();
+      const patientName = $("#patientName").val();
+      const appointmentDate = $("#appointmentDate").val();
+      const appointmentTime = $("#appointmentTime").val();
+  
+      // Display details in the success card
+      $("#displayDoctorName").text(doctorName);
+      $("#displayPatientName").text(patientName);
+      $("#displayAppointmentDate").text(appointmentDate);
+      $("#displayAppointmentTime").text(appointmentTime);
+  
+      // Show the success card and hide the form
+      $("#appointmentForm").addClass("hidden");
+      $("#appointmentCard").removeClass("hidden");
+    });
+  });
+</script>
